@@ -68,4 +68,25 @@ for epoch in range(1, num_epochs):
         if batch_id % 200 == 0:
             print(f"{batch_id} / {len(train_loader)}")
 
+    #test epoch
+    correct = 0
+    total_count = 0
 
+    #dont need any gradients during testing
+    #this is purely to test the classifier so far
+    #no back prop is needed
+    with torch.no_grad():
+        for x, y in test_loader:
+
+            # convert data to a vector
+            x = x.view(-1, 784).float()
+
+            # predict output
+            y_hat = predict(x, layer_1, layer_2, layer_3)
+
+            #check correctness
+            _, pred_label = torch.max(y_hat.data, 1)
+            total_count += x.data.size()[0]
+            correct += (pred_label == y.data).sum()
+
+    print(f"Correct: {(correct / total_count) * 100.} %")
