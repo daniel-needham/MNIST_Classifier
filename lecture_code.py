@@ -6,8 +6,8 @@ import torch.optim as optim
 
 # data
 input_size = 784
-hidden_layer = 512
-second_hidden_layer = 256
+hidden_layer = 64
+second_hidden_layer = 64
 output_size = 10
 batch_size = 64
 
@@ -39,7 +39,7 @@ def predict(x, layer_1, layer_2, layer_3):
 # concatenated list of weights and biases across all layers
 parameters = list(layer_1.parameters()) + list(layer_2.parameters()) + list(layer_3.parameters())
 print(parameters)
-optimizer = optim.SGD(parameters, lr=0.01)
+optimizer = optim.SGD(parameters, lr=0.05)
 
 # define loss function
 loss_fn = nn.CrossEntropyLoss()

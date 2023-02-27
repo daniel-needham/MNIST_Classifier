@@ -6,14 +6,13 @@ epoch = 20
 max_layers = 5
 results = []
 layers = [784, 10]
-hidden_nodes = 512
+hidden_nodes = 32
 
 for x in range(max_layers):
     nn = nn_classifier.nnClassifier(layers, epoch)
     results.append(nn.train_and_test())
 
     layers.insert(1, hidden_nodes)
-
 
 print(results)
 

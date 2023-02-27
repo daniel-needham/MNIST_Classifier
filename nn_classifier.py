@@ -51,6 +51,7 @@ class nnClassifier:
 
                 # calc error
                 loss = loss_fn(y_hat, y)
+                print(loss)
 
                 # calculate the gradients
                 loss.backward()
